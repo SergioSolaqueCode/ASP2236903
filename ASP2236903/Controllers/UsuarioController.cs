@@ -90,6 +90,8 @@ namespace ASP2236903.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult Edit(usuario editUser)
         {
