@@ -7,14 +7,14 @@ using ASP2236903.Models;
 
 namespace ASP2236903.Controllers
 {
-    public class UsuarioController : Controller
+    public class ProveedorController : Controller
     {
-        // GET: Usuario
+        // GET: Proveedor
         public ActionResult Index()
         {
             using (var db = new inventario2021Entities())
             {
-                return View(db.usuario.ToList());
+                return View(db.proveedor.ToList());
             }
         }
 
@@ -26,7 +26,7 @@ namespace ASP2236903.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create(usuario usuario)
+        public ActionResult Create(proveedor proveedor)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -35,23 +35,23 @@ namespace ASP2236903.Controllers
             {
                 using (var db = new inventario2021Entities())
                 {
-                    db.usuario.Add(usuario);
+                    db.proveedor.Add(proveedor);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
             }
         }
-
         public ActionResult Details(int id)
         {
             using (var db = new inventario2021Entities())
             {
-                var findUser = db.usuario.Find(id);
-                return View(findUser);
+                var findProveedor = db.proveedor.Find(id);
+                return View(findProveedor);
             }
         }
 
@@ -61,16 +61,17 @@ namespace ASP2236903.Controllers
             {
                 using (var db = new inventario2021Entities())
                 {
-                    var findUser = db.usuario.Find(id);
-                    db.usuario.Remove(findUser);
+                    var findProveedor = db.proveedor.Find(id);
+                    db.proveedor.Remove(findUser);
                     return RedirectToAction("index");
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
-            }         
-                
+            }
+
         }
 
         public ActionResult Edit(int id)
@@ -79,10 +80,11 @@ namespace ASP2236903.Controllers
             {
                 using (var db = new inventario2021Entities())
                 {
-                    usuario findUser = db.usuario.Where(a => a.id == id).FirstOrDefault();
-                    return View(findUser);
+                    usuario findProveedor = db.proveedor.Where(a => a.id == id).FirstOrDefault();
+                    return View(findProveedor);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
@@ -91,27 +93,34 @@ namespace ASP2236903.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit(usuario editUser)
+        public ActionResult Edit(proveedor editProveedor)
         {
-           
+
             try
-            { 
+            {
                 using (var db = new inventario2021Entities())
                 {
-                    usuario user = db.usuario.Find(editUser.id);
-                    user.nombre = editUser.nombre;
-                    user.apellido = editUser.apellido;
-                    user.email = editUser.email;
-                    user.fecha_nacimiento = editUser.fecha_nacimiento;
-                    user.password = editUser.password;
+                    //    usuario user = db.usuario.Find(editUser.id);
+                    //    user.nombre = editUser.nombre;
+                    //    user.apellido = editUser.apellido;
+                    //    user.email = editUser.email;
+                    //    user.fecha_nacimiento = editUser.fecha_nacimiento;
+                    //    user.password = editUser.password;
+                    //    return RedirectToAction("Index)");
+                    //
+                    proveedor proveedor = db.proveedor.Find(editProveedor.id);
+                    proveedor.nombre = editProveedor.nombre;
+                    proveedor.direccion = editProveedor.direccion;
+                    proveedor.telefono = editProveedor.telefono;
+                    proveedor.nombre_contacto = editProveedor.nombre_contacto;
                     return RedirectToAction("Index)");
                 }
-
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
             }
+
         }
-    }
 }
