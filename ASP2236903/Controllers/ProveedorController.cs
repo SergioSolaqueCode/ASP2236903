@@ -63,7 +63,7 @@ namespace ASP2236903.Controllers
                 {
                     var findProveedor = db.proveedor.Find(id);
                     db.proveedor.Remove(findProveedor);
-                    return RedirectToAction("index");
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception ex)

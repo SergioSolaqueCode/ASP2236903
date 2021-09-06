@@ -7,14 +7,14 @@ using ASP2236903.Models;
 
 namespace ASP2236903.Controllers
 {
-    public class UsuarioController : Controller
+    public class RolesController : Controller
     {
-        // GET: Usuario
+        // GET: Roles
         public ActionResult Index()
         {
             using (var db = new inventario2021Entities())
             {
-                return View(db.usuario.ToList());
+                return View(db.roles.ToList());
             }
         }
 
@@ -26,7 +26,7 @@ namespace ASP2236903.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create(usuario usuario)
+        public ActionResult Create(roles roles)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -35,11 +35,12 @@ namespace ASP2236903.Controllers
             {
                 using (var db = new inventario2021Entities())
                 {
-                    db.usuario.Add(usuario);
+                    db.roles.Add(roles);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
@@ -50,8 +51,8 @@ namespace ASP2236903.Controllers
         {
             using (var db = new inventario2021Entities())
             {
-                var findUser = db.usuario.Find(id);
-                return View(findUser);
+                var findRoles = db.roles.Find(id);
+                return View(findRoles);
             }
         }
 
@@ -61,16 +62,17 @@ namespace ASP2236903.Controllers
             {
                 using (var db = new inventario2021Entities())
                 {
-                    var findUser = db.usuario.Find(id);
-                    db.usuario.Remove(findUser);
+                    var findRoles = db.roles.Find(id);
+                    db.roles.Remove(findRoles);
                     return RedirectToAction("Index");
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
-            }         
-                
+            }
+
         }
 
         public ActionResult Edit(int id)
@@ -79,10 +81,11 @@ namespace ASP2236903.Controllers
             {
                 using (var db = new inventario2021Entities())
                 {
-                    usuario findUser = db.usuario.Where(a => a.id == id).FirstOrDefault();
-                    return View(findUser);
+                    roles findRoles = db.roles.Where(a => a.id == id).FirstOrDefault();
+                    return View(findRoles);
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
@@ -91,27 +94,25 @@ namespace ASP2236903.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit(usuario editUser)
+        public ActionResult Edit(roles editRoles)
         {
-           
+
             try
-            { 
+            {
                 using (var db = new inventario2021Entities())
                 {
-                    usuario user = db.usuario.Find(editUser.id);
-                    user.nombre = editUser.nombre;
-                    user.apellido = editUser.apellido;
-                    user.email = editUser.email;
-                    user.fecha_nacimiento = editUser.fecha_nacimiento;
-                    user.password = editUser.password;
+                    
+                    roles roles = db.roles.Find(editRoles.id);
+                    roles.descripcion = editRoles.descripcion;
                     return RedirectToAction("Index)");
                 }
-
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", "error" + ex);
                 return View();
             }
+
         }
     }
 }
