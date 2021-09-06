@@ -62,7 +62,7 @@ namespace ASP2236903.Controllers
                 using (var db = new inventario2021Entities())
                 {
                     var findProveedor = db.proveedor.Find(id);
-                    db.proveedor.Remove(findUser);
+                    db.proveedor.Remove(findProveedor);
                     return RedirectToAction("index");
                 }
             }
@@ -80,7 +80,7 @@ namespace ASP2236903.Controllers
             {
                 using (var db = new inventario2021Entities())
                 {
-                    usuario findProveedor = db.proveedor.Where(a => a.id == id).FirstOrDefault();
+                    proveedor findProveedor = db.proveedor.Where(a => a.id == id).FirstOrDefault();
                     return View(findProveedor);
                 }
             }
@@ -123,4 +123,5 @@ namespace ASP2236903.Controllers
             }
 
         }
+    }
 }
