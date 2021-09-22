@@ -1,0 +1,28 @@
+﻿@model ASP2236903.Models.usuariorol
+
+<div>
+    <h4>usuariorol</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idRol)
+        </dt>
+
+        <dd>
+            @ASP2236903.Controllers.UsuarioRolController.DescripcionRol(Model.idRol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
