@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.idUsuario)
+            Usuario
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idRol)
+            Rol
         </th>
         <th></th>
     </tr>
@@ -24,10 +24,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.idUsuario)
+                @ASP2236903.Controllers.UsuarioRolController.NombreUsuario(item.idUsuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idRol)
+                @ASP2236903.Controllers.UsuarioRolController.DescripcionRol(item.idRol)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
