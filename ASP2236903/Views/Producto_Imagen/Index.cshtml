@@ -24,20 +24,21 @@
                 @Html.DisplayFor(modelItem => item.id_producto)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.id }, new { @class = "linkDelete" })
             </td>
         </tr>
     }
 
 </table>
 
-<script>
+@section scripts{
+    <script>
         $(".linkDelete").click(function (event) {
             if (!confirm('¿Está seguro de eliminar?')) {
                 event.preventDefault();
             }
         })
-</script>
+    </script>
 }
