@@ -34,10 +34,19 @@
                             <li>@Html.ActionLink("Proveedor Crud", "Index", "Proveedor")</li>
                             <li>@Html.ActionLink("Cliente Crud", "Index", "Cliente")</li>
                             <li>@Html.ActionLink("Roles crud", "Index", "Roles")</li>
-                            <li>@Html.ActionLink("Producto Crud", "Index", "Prodcuto")</li>
+                            <li>@Html.ActionLink("Producto Crud", "Index", "Producto")</li>
+                            <li>@Html.ActionLink("Producto Compra Crud", "Index", "Producto_Compra")</li>
+                            <li>@Html.ActionLink("Compra Crud", "Index", "Compra")</li>
+                            <li>@Html.ActionLink("Producto Imagen Crud", "Index", "Prodcuto_Imagen")</li>
+                            <li>@Html.ActionLink("Usuario Rol Crud", "Index", "UsuarioRol")</li>
                             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                         </ul>
                     </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Cerrar Sesion", "CloseSession", "Usuario")
+                    </li>
+                    }  
                 </ul>
             </div>
         </div>
