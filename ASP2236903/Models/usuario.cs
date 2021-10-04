@@ -11,7 +11,9 @@ namespace ASP2236903.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+
     public partial class usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,12 +24,20 @@ namespace ASP2236903.Models
         }
     
         public int id { get; set; }
+        [Required(ErrorMessage = "el campo es obligatorio")]
+        [StringLength(10, ErrorMessage = "maximo 10 caracteres")]
         public string nombre { get; set; }
+        [Required]
         public string apellido { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
         public System.DateTime fecha_nacimiento { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
+        [Required]
         public string password { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compra> compra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

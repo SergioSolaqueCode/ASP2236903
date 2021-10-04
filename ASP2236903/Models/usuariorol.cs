@@ -11,10 +11,12 @@ namespace ASP2236903.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class usuariorol
     {
         public int id { get; set; }
+        [Required(ErrorMessage = "el campo es obligatorio")]
         public int idUsuario { get; set; }
         public int idRol { get; set; }
     
