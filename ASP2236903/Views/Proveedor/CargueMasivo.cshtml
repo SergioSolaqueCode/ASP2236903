@@ -1,15 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "Cargue Masivo";
+    ViewBag.Title = "CargueMasivo";
 }
-
-<h2>uploadCSV</h2>
 
 <h2>Cargar CSV</h2>
 
-<h3>Proveedor</h3>
-
-@using (Html.BeginForm("uploadCSV", "Proveedor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CargueMasivo", "Proveedor", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-group">
         <label class="control-label col-md-2">Cargar CSV</label>
@@ -24,4 +20,3 @@
         </div>
     </div>
 }
-

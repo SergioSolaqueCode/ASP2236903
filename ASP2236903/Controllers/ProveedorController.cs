@@ -123,7 +123,12 @@ namespace ASP2236903.Controllers
                 return View();
             }
 
-        }
+        }    
+
+        public ActionResult CargueMasivo()
+            {
+                return View();
+            }
         [HttpPost]
         public ActionResult CargueMasivo(HttpPostedFileBase fileForm)
         {
